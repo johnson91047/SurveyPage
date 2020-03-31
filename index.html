@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.css"
+      media="screen,projection"
+    />
+
+    <link
+      href="css/style.css"
+      type="text/css"
+      rel="stylesheet"
+      media="screen,projection"
+    />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <nav class="white z-depth-1" role="navigation">
+      <div class="nav-wrapper container">
+        <a href="" class="brand-logo grey-text chinese">Survey</a>
+      </div>
+    </nav>
+
+    <!-- story section -->
+    <!--<div class="container">
+      <div class="section">
+        <div class="row">
+          <div class='embedsocial-stories' data-ref="cb584be1353f33b09514736b555467e38c9b9047">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m12 l12 center">
+            <p>asdasdasd</p>
+          </div>
+        </div>
+        <script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/st.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialStoriesScript"));</script>
+      </div>
+    </div>-->
+
+    <!-- description section -->
+    <div class="container row" id="description_section">
+      
+    </div>
+
+    <!-- survey section -->
+    <div class="container row" id="survey_section">
+      
+    </div>
+
+    <div class="row center">
+      <p id="page">1/5</p>
+    </div>
+
+    <div class="row">
+      <a class="btn disabled waves-effect col s12 m2 offset-m5">Next</a>
+    </div>
+    
+    <template id="normal_question_template">
+      <div data-repeat-value="normal_question">
+        <div class="divider"></div>
+        <form>
+          <div class="row section">
+            <div class="row col s12 m3 offset-m1 left-align">
+              <p><b>{{ value.title }}</b></p>
+              <br>
+            </div>
+
+            <div class="card col s12 m7 offset-m1">
+              <div class="col s2 center-align">
+                <p>{{ value.least }}</p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="1" />
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="2"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="3"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="4"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="5"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="6"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="7"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s2 center-align">
+                <p>{{ value.most }}</p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </template>
+
+    <template id="description_template">
+      <div data-repeat-value="description">
+        <div class="divider"></div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">{{ value.title }}</span>
+            <div data-repeat-lines="{{ value.contents }}">
+              <p >{{ lines }}</p>
+              <br>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="binary_question_template">
+      <div data-repeat-value="binary_question">
+        <div class="divider"></div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">{{ value.title }}</span>
+            <form>
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="1"/>
+                    <span>{{ value.true }}</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="0"/>
+                    <span>{{ value.false }}</span>
+                  </label>
+                </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    
+    <footer class="page-footer green lighten-3 z-depth-3">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m2">
+
+          <div class="col s12 m2 offset-m2 ">
+            <a href="#"><i class="material-icons">arrow_upward</i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 Copyright
+        </div>
+      </div>
+    </footer>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/stamp.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/action.js"></script>
+  </body>
+</html>
