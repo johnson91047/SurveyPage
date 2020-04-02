@@ -15,7 +15,7 @@ var page1 = {
     a: {
       title: "How well do you like this Instagram Story advertisement?",
       contents: [
-        "The purpose of this research project is to observe the effect of juice description on the effect of Instagram advertising. This is a research project being conducted by Lucy TING and Yi-Hsuan CHEN at National Taipei University, TAIWAN.",
+        "The purpose of this research project is to observe the effect of juice description on the effect of Instagram advertising. This is a research project being conducted by Lucy TING and Yi-Hsuan CHEN.",
         "Your participation in this research study is voluntary. You may choose not to participate. If you decide to participate in this research survey, you may withdraw at any time. If you decide not to participate in this study or if you withdraw from participating at any time, you will not be penalized.",
         "The procedure involves filling an online survey that will take approximately 10 minutes. Your responses will be confidential and we do not collect identifying information such as your name, email address or IP address. The survey questions will be just about the effect of the description on Instagram advertising. The results of this study will be used for scholarly purposes only and may be shared with National Taipei University, TAIWAN representatives.",
         "If you have any questions about the research study, please contact us.",
@@ -72,6 +72,13 @@ var page1 = {
 };
 
 var page2 = {
+  description: {
+    a: {
+      title: "The experience of using Instagram Story",
+      contents: [],
+      img: ""
+    }
+  },
   multiple_choice_question: {
     a: {
       title: 'Have you ever seen an Instagram or Facebook "Story"?',
@@ -164,7 +171,13 @@ var page3 = {
 };
 
 var page4 = {
-  description: {},
+  description: {
+    a: {
+      title: "Please answer according to your real-life situation or opinions.",
+      contents: [],
+      img: ""
+    }
+  },
   normal_question: {
     a: {
       title: "I enjoyed this ad very much. ",
@@ -198,13 +211,6 @@ var page4 = {
       most: "Strongly agree"
     }
   },
-  multiple_choice_question: {
-    a: {
-      title: "Which product is advertised in this ad?",
-      name: "Which_Product",
-      options: ["Apple juice", "Apple pie"]
-    }
-  },
   prePage: function() {},
   postPage: function() {
     let result1 = $(`[name='${this.normal_question.a.name}']:checked`).val();
@@ -212,11 +218,7 @@ var page4 = {
     let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
     let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
     let result5 = $(`[name='${this.normal_question.e.name}']:checked`).val();
-    let result6 = $(
-      `[name='${this.multiple_choice_question.a.name}']:checked`
-    ).val();
 
-    storeData[this.multiple_choice_question.a.name] = result6;
     storeData[this.normal_question.a.name] = result1;
     storeData[this.normal_question.b.name] = result2;
     storeData[this.normal_question.c.name] = result3;
@@ -242,7 +244,13 @@ var page4 = {
 };
 
 var page5 = {
-  description: {},
+  description: {
+    a: {
+      title: "Please answer according to your real-life situation or opinions.",
+      contents: [],
+      img: ""
+    }
+  },
   normal_question: {
     a: {
       title: "What is your overall evaluation of the ad?",
@@ -326,7 +334,13 @@ var page5 = {
 };
 
 var page6 = {
-  description: {},
+  description: {
+    a: {
+      title: "Please answer according to your real-life situation or opinions.",
+      contents: [],
+      img: ""
+    }
+  },
   normal_question: {
     a: {
       title: "How likely are you to purchase this advertised product?",
@@ -340,13 +354,19 @@ var page6 = {
       least: "Not at all",
       most: "Very much"
     },
-    c: {
+    ㄏ: {
+      title: "Would you like to try the product if you never tried it?",
+      name: "Want_To_Try_If_Never_Try",
+      least: "Not at all",
+      most: "Very much"
+    },
+    d: {
       title: "I like apple juice",
       name: "I_Like_Apple_Juice",
       least: "Unfavorable",
       most: "Favorable"
     },
-    d: {
+    e: {
       title: "I may drink apple juice in the next six months.",
       name: "Drink_Apple_Juice_Next_Six_Month",
       least: "Not likable",
@@ -360,11 +380,13 @@ var page6 = {
     let result2 = $(`[name='${this.normal_question.b.name}']:checked`).val();
     let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
     let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
+    let result5 = $(`[name='${this.normal_question.d.name}']:checked`).val();
 
     storeData[this.normal_question.a.name] = result1;
     storeData[this.normal_question.b.name] = result2;
     storeData[this.normal_question.c.name] = result3;
     storeData[this.normal_question.d.name] = result4;
+    storeData[this.normal_question.e.name] = result5;
 
     current_page_count++;
     current_page = page7;
@@ -386,7 +408,13 @@ var page6 = {
 };
 
 var page7 = {
-  description: {},
+  description: {
+    a: {
+      title: "Please answer according to your real-life situation or opinions.",
+      contents: [],
+      img: ""
+    }
+  },
   normal_question: {
     a: {
       title:
@@ -467,7 +495,13 @@ var page7 = {
 };
 
 var page8 = {
-  description: {},
+  description: {
+    a: {
+      title: "Please answer according to your real-life situation or opinions.",
+      contents: [],
+      img: ""
+    }
+  },
   normal_question: {
     a: {
       title:
@@ -541,8 +575,8 @@ var page8 = {
 var personalPage = {
   description: {
     a: {
-      title: `The survey code of Amazon Mechanical Turk is \"${generate_survey_code()}\"`,
-      contents: ["Please answer this survey code into Amazon Mechanical Turk"],
+      title: "Basic Information",
+      contents: [""],
       img: ""
     }
   },
@@ -699,8 +733,8 @@ var disagreementPage = {
     a: {
       title: "Survey has completed !",
       contents: [
-        'We are sorry about that since you select "disagree", you won\'t get the code.',
-        "Thank you for your participation !"
+        "Thank you for participating in this research.  Your feedback is appreciated.",
+        "We are looking for Instagram users.  If you are not one yet, we are sorry that you do not meet the qualification and you cannot get Amazon’s survey code.  Still, we sincerely thank you for your time and interest in our survey."
       ],
       img: ""
     }
@@ -716,6 +750,11 @@ var disagreementPage = {
 var finishPage = {
   description: {
     a: {
+      title: `The survey code of Amazon Mechanical Turk is \"${generate_survey_code()}\"`,
+      contents: ["Please answer this survey code into Amazon Mechanical Turk"],
+      img: ""
+    },
+    b: {
       title: "Survey has completed !",
       contents: ["Thank you for your participation !"],
       img: ""

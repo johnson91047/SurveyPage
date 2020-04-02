@@ -87,7 +87,7 @@ var updatePageIndicator = function() {
 
 var OnNextClick = function() {
   if (!current_page.check()) {
-    alert("you have not finished yet!");
+    alert("you have not finished this page yet!");
     return;
   }
 
