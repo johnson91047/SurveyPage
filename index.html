@@ -42,20 +42,9 @@
     <div id="story" class="container">
       <div class="section">
         <div class="row">
-          <div id="story_container" class='embedsocial-stories' data-ref="cb584be1353f33b09514736b555467e38c9b9047">
-
-          </div>
+          <div id="story_container" class='embedsocial-stories' data-ref="747e03b62d77cd392a26718bd7b0d97de2c9d8b6"></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/st.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialStoriesScript"));</script>
+      
         </div>
-        <div class="row">
-          <a hidden class="btn waves-effect col s12 m2 offset-m5" onclick="OnStoryClick()">story</a>
-        </div>
-        <script>(
-          function(d, s, id){
-            var js; if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id; 
-            js.src = "https://embedsocial.com/embedscript/st.js"; 
-            d.getElementsByTagName("head")[0].appendChild(js);
-          }(document, "script", "EmbedSocialStoriesScript"));</script>
       </div>
     </div>
 
@@ -67,6 +56,9 @@
     <!-- survey section -->
     <div class="container">
       <div class="row" id="survey_multiple_choice_section">
+
+      </div>
+      <div class="row" id="survey_image_selection_section">
 
       </div>
       <div class="row" id="survey_normal_section">
@@ -98,7 +90,7 @@
               <br>
             </div>
 
-            <div class="card col s12 m7 ">
+            <div class="card col s12 m6 offset-m1">
               <div class="col s2 center-align">
                 <p>{{ value.least }}</p>
               </div>
@@ -172,15 +164,16 @@
         <div class="divider"></div>
         <div class="card">
           <div class="card-content">
-            <span class="card-title">{{ value.title }}</span>
+            <span class="card-title title-bold">{{ value.title }}</span>
             <div data-repeat-lines="{{ value.contents }}">
               <p >{{ lines }}</p>
               <br>
             </div>
           </div>
-          <div class="row center">
-            <img  src="{{ value.img }}"></img>
+          <div name="des_img" class="row center">
+            <img class="border" src="{{ value.img }}" height="500"></img>
           </div>
+          <div class="row"></div>
         </div>
       </div>
     </template>
@@ -240,21 +233,50 @@
         <div class="divider"></div>
         <form>
           <div class="row section">
-            <div class="row col s12 m3 offset-m1 left-align">
+            <div class="col s12 m3 offset-m1 left-align">
               <p><b>{{ value.title }}</b></p>
               <br>
             </div>
 
             <div class="col s12 m7 offset-m1">
-                <div class="input-field">
-                  <input id="{{ value.name }}" name="{{ value.name }}" value="" type="text" class="validate">
-                  <label for="{{ value.name }}">{{ value.name }}</label>
-                </div>
+              <div class="input-field">
+                <input id="{{ value.name }}" name="{{ value.name }}" value="" type="text" class="validate">
+                <label for="{{ value.name }}">{{ value.name }}</label>
+              </div>
             </div>
           </div>
         </form>
       </div>
     </template>
+
+    <template id="image_multiple_choice_template">
+      <div data-repeat-value="image_multiple_choice_question">
+        <div class="divider"></div>
+          <div class="card">
+            <div class="card-content">
+              <div class="row left-align">
+                <p><b>{{ value.title }}</b></p>
+              </div>
+  
+              <div data-repeat-option="{{ value.options }}" class="row center">
+                <div class="col s12 m6">
+                  <div class="row section">
+                    <img class="border" src="{{ option.img }}" height="350"/>
+                    <p>
+                      <label>
+                        <input name="{{ ^.value.name }}" type="radio" value="{{ option.option_title }}" />
+                        <span class="darker-text">{{ option.option_title }}</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
 
     
     <footer class="page-footer green lighten-3 z-depth-3">
@@ -278,7 +300,8 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
@@ -301,6 +324,7 @@
     </script>
     <script src="js/init.js"></script>
     <script src="js/stamp.js"></script>
+    <script src="js/timer.js"></script>
     <script src="js/questions.js"></script>
     <script src="js/action.js"></script>
     <script src="js/storeData.js"></script>
