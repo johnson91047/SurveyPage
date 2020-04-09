@@ -1,3 +1,6 @@
+var Version = "2-3";
+var total_timer = new Timer();
+
 var generate_survey_code = function () {
   let s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let result = [];
@@ -68,6 +71,7 @@ var page1 = {
       current_page_count++;
       current_page = page2;
       storeData[this.multiple_choice_question.a.name] = result;
+      total_timer.startTimer();
     } else {
       current_page = disagreementPage;
     }
@@ -199,9 +203,8 @@ var page4 = {
     a: {
       title: "You will see a story at next page.",
       contents: [
-        "The following is how to use the story.",
-        "You can change page by clicking arrow button next to the story or sliding",
-        'You can click the black space or "X" button to close the story',
+        "Click the arrow button to proceed to the next page of the Story Ad. ",
+        'Click the dark area or "X" button to close.',
       ],
       img: "",
     },
@@ -235,8 +238,10 @@ var page4 = {
 var page5 = {
   description: {
     a: {
-      title: "Click to watch the story",
-      contents: ["Watch story to progress to next page"],
+      title: "Click the icon below",
+      contents: [
+        "Watch the Story advertisement, before you progress to next page",
+      ],
       img: "",
     },
   },
@@ -299,13 +304,31 @@ var page6 = {
       ],
     },
   },
+  normal_question: {
+    a: {
+      title: "I am happy to finish watching the whole ad.",
+      name: "Happy_To_Finish_Ad",
+      least: "Strongly disagree",
+      most: "Strongly agree",
+    },
+  },
   check: function () {
     remove_all_highlight_card();
     let image_multiple_choice = current_page["image_multiple_choice_question"];
+    let normal = current_page["normal_question"];
     let result = true;
 
     for (var key in image_multiple_choice) {
       let name = image_multiple_choice[key].name;
+      let value = $(`[name='${name}']:checked`).val();
+      if (value === undefined) {
+        highlight_card(name);
+        result = false;
+      }
+    }
+
+    for (var key in normal) {
+      let name = normal[key].name;
       let value = $(`[name='${name}']:checked`).val();
       if (value === undefined) {
         highlight_card(name);
@@ -321,8 +344,10 @@ var page6 = {
     let result = $(
       `[name='${this.image_multiple_choice_question.a.name}']:checked`
     ).val();
+    let result1 = $(`[name='${this.normal_question.a.name}']:checked`).val();
 
     storeData[this.image_multiple_choice_question.a.name] = result;
+    storeData[this.normal_question.a.name] = result1;
 
     current_page_count++;
     current_page = page7;
@@ -339,33 +364,21 @@ var page7 = {
   },
   normal_question: {
     a: {
-      title: "I enjoyed this ad very much. ",
-      name: "Enjoy_Ad",
+      title:
+        "I understand that I can proceed to the next page by clicking the arrow button.",
+      name: "Understand_Can_Proceed_To_Next_By_Arrow",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     b: {
-      title: "Watching this ad was fun. ",
-      name: "Watching_Is_Fun",
+      title: "I know I can choose whether to finish watching this whole ad.",
+      name: "Understand_Can_Choose_Whether_To_Finish",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     c: {
-      title: "I would describe this ad as not interesting at all.",
-      name: "Not_Interesting",
-      least: "Strongly disagree",
-      most: "Strongly agree",
-    },
-    d: {
-      title:
-        "While watching this ad, I was thinking about how much I enjoyed it.",
-      name: "Thinking_About_How_Much_I_Enjoyed",
-      least: "Strongly disagree",
-      most: "Strongly agree",
-    },
-    e: {
-      title: "This ad held my attention. ",
-      name: "Held_Attention",
+      title: "I find I can control the viewing speed by myself.",
+      name: "Can_Control_Viewing_Speed",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
@@ -377,14 +390,10 @@ var page7 = {
     let result1 = $(`[name='${this.normal_question.a.name}']:checked`).val();
     let result2 = $(`[name='${this.normal_question.b.name}']:checked`).val();
     let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
-    let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
-    let result5 = $(`[name='${this.normal_question.e.name}']:checked`).val();
 
     storeData[this.normal_question.a.name] = result1;
     storeData[this.normal_question.b.name] = result2;
     storeData[this.normal_question.c.name] = result3;
-    storeData[this.normal_question.d.name] = result4;
-    storeData[this.normal_question.e.name] = result5;
 
     current_page_count++;
     current_page = page8;
@@ -416,44 +425,121 @@ var page8 = {
   },
   normal_question: {
     a: {
+      title: "I enjoyed this ad very much.",
+      name: "Enjoy_Ad",
+      least: "Strongly disagree",
+      most: "Strongly agree",
+    },
+    b: {
+      title: "Watching this ad was fun.",
+      name: "Watching_This_Ad_Is_Fun",
+      least: "Strongly disagree",
+      most: "Strongly agree",
+    },
+    c: {
+      title: "I would describe this ad as NOT interesting at all.",
+      name: "Not_Interesting_In_Ad",
+      least: "Strongly disagree",
+      most: "Strongly agree",
+    },
+    d: {
+      title:
+        "While watching this ad, I was thinking about how much I enjoyed it.",
+      name: "Thinking_About_How_Much_I_Enjoyed",
+      least: "Strongly disagree",
+      most: "Strongly agree",
+    },
+    e: {
+      title: "This ad held my attention. ",
+      name: "Ad_Held_My_Attention",
+      least: "Strongly disagree",
+      most: "Strongly agree",
+    },
+  },
+  prePage: function () {
+    hide_description_img();
+  },
+  postPage: function () {
+    let result1 = $(`[name='${this.normal_question.a.name}']:checked`).val();
+    let result2 = $(`[name='${this.normal_question.b.name}']:checked`).val();
+    let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
+    let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
+    let result5 = $(`[name='${this.normal_question.e.name}']:checked`).val();
+
+    storeData[this.normal_question.a.name] = result1;
+    storeData[this.normal_question.b.name] = result2;
+    storeData[this.normal_question.c.name] = result3;
+    storeData[this.normal_question.d.name] = result4;
+    storeData[this.normal_question.e.name] = result5;
+
+    current_page_count++;
+    current_page = page9;
+  },
+  check: function () {
+    remove_all_highlight_card();
+    let normal = current_page["normal_question"];
+    let result = true;
+
+    for (var key in normal) {
+      let name = normal[key].name;
+      let value = $(`[name='${name}']:checked`).val();
+      if (value === undefined) {
+        highlight_card(name);
+        result = false;
+      }
+    }
+    return result;
+  },
+};
+
+var page9 = {
+  description: {
+    a: {
+      title: "Please answer according to your real-life situation or opinions.",
+      contents: [],
+      img: "",
+    },
+  },
+  normal_question: {
+    a: {
       title: "What is your overall evaluation of the ad?",
-      name: "Overall_Evaluation",
+      name: "Overall_Ad_Evaluation",
       least: "Very bad",
       most: "Very good",
     },
     b: {
       title: "Do you feel this ad pleasant?",
-      name: "Feel_Pleasant",
+      name: "Watching_Ad_Feel_Pleasant",
       least: "Not pleasant",
       most: "Pleasant",
     },
     c: {
       title: "Do you think this ad favorable?",
-      name: "Favorable",
+      name: "Ad_Is_Favorable",
       least: "Not favorable",
       most: "Favorable",
     },
     d: {
       title: "Do you find this ad likable?",
-      name: "Likable",
+      name: "Ad_Is_Likable",
       least: "Not likable",
       most: "Likable",
     },
     e: {
-      title: "The product is very good",
-      name: "Is_Very_Good",
+      title: "The product is good",
+      name: "Product_Is_Good",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     f: {
-      title: "The product is very appealing",
-      name: "Is_Very_Appealing",
+      title: "The product is appealing",
+      name: "Product_Is_Appealing",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     g: {
-      title: "The product is very interesting",
-      name: "Is_Very_Interesting",
+      title: "The product is interesting",
+      name: "Product_Is_Interesting",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
@@ -479,7 +565,7 @@ var page8 = {
     storeData[this.normal_question.g.name] = result7;
 
     current_page_count++;
-    current_page = page9;
+    current_page = page10;
   },
   check: function () {
     remove_all_highlight_card();
@@ -499,7 +585,7 @@ var page8 = {
   },
 };
 
-var page9 = {
+var page10 = {
   description: {
     a: {
       title: "Please answer according to your real-life situation or opinions.",
@@ -529,14 +615,14 @@ var page9 = {
     d: {
       title: "I like apple juice",
       name: "I_Like_Apple_Juice",
-      least: "Unfavorable",
-      most: "Favorable",
+      least: "Strongly disagree",
+      most: "Strongly agree",
     },
     e: {
-      title: "I may drink apple juice in the next six months.",
-      name: "Drink_Apple_Juice_Next_Six_Month",
-      least: "Not likable",
-      most: "Likable",
+      title: "I may drink apple juice in the next three months.",
+      name: "May_Drink_Apple_Juice_Next_Three_Month",
+      least: "Strongly disagree",
+      most: "Strongly agree",
     },
   },
   prePage: function () {
@@ -556,7 +642,7 @@ var page9 = {
     storeData[this.normal_question.e.name] = result5;
 
     current_page_count++;
-    current_page = page10;
+    current_page = page11;
   },
   check: function () {
     remove_all_highlight_card();
@@ -576,7 +662,7 @@ var page9 = {
   },
 };
 
-var page10 = {
+var page11 = {
   description: {
     a: {
       title: "Please answer according to your real-life situation or opinions.",
@@ -647,7 +733,7 @@ var page10 = {
     storeData[this.normal_question.f.name] = result6;
 
     current_page_count++;
-    current_page = page11;
+    current_page = page12;
   },
   check: function () {
     remove_all_highlight_card();
@@ -666,7 +752,7 @@ var page10 = {
   },
 };
 
-var page11 = {
+var page12 = {
   description: {
     a: {
       title: "Please answer according to your real-life situation or opinions.",
@@ -955,11 +1041,20 @@ var finishPage = {
     hide_description_img();
     $("#page").hide();
     $("#nextBtn").hide();
-    storeData["trusted"] = true;
+    total_timer.stopTimer();
+    storeData["Total_Time"] = total_timer.get_timer_second();
+    storeData["Version"] = Version;
+    console.log(total_timer.get_timer_second());
+
     let database = firebase.database();
-    let root = database.ref("/");
-    let ref = root.push();
+    let data = database.ref(`/data/${Version}`);
+    let count = database.ref(`/data/${Version}/count`);
+    let ref = data.push();
     ref.set(storeData);
+
+    count.transaction(function (value) {
+      return (value || 0) + 1;
+    });
   },
   postPage: function () {},
   check: function () {},
