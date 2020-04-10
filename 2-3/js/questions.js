@@ -32,11 +32,9 @@ var page1 = {
     a: {
       title: "How well do you like this Instagram Story advertisement?",
       contents: [
-        "The purpose of this research project is to observe the effect of juice description on the effect of Instagram advertising. This is a research project being conducted by Lucy TING and Yi-Hsuan CHEN.",
-        "Your participation in this research study is voluntary. You may choose not to participate. If you decide to participate in this research survey, you may withdraw at any time. If you decide not to participate in this study or if you withdraw from participating at any time, you will not be penalized.",
-        "The procedure involves filling an online survey that will take approximately 10 minutes. Your responses will be confidential and we do not collect identifying information such as your name, email address or IP address. The survey questions will be just about the effect of the description on Instagram advertising. The results of this study will be used for scholarly purposes only and may be shared with National Taipei University, TAIWAN representatives.",
-        "If you have any questions about the research study, please contact us.",
-        "Email：joy850303@gmail.com",
+        "This research is to observe the effect of descriptions on advertising effectiveness.",
+        "Your participation is voluntary and you can withdraw at any time.",
+        "It will take you no more than 10 minutes. Your responses will be confidential and used ONLY for scholarly purposes.",
       ],
       img: "",
     },
@@ -365,19 +363,19 @@ var page7 = {
   normal_question: {
     a: {
       title:
-        "I understand that I can proceed to the next page by clicking the arrow button.",
+        "This ad allows me to proceed to the next page by clicking on the arrow button.",
       name: "Understand_Can_Proceed_To_Next_By_Arrow",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     b: {
-      title: "I know I can choose whether to finish watching this whole ad.",
-      name: "Understand_Can_Choose_Whether_To_Finish",
+      title: "I feel I have no option but to finish watching this ad.",
+      name: "Feel_Forced_To_Finish_Ad",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     c: {
-      title: "I find I can control the viewing speed by myself.",
+      title: "I feel I can control the speed of this ad.",
       name: "Can_Control_Viewing_Speed",
       least: "Strongly disagree",
       most: "Strongly agree",
@@ -450,8 +448,9 @@ var page8 = {
       most: "Strongly agree",
     },
     e: {
-      title: "This ad held my attention. ",
-      name: "Ad_Held_My_Attention",
+      title:
+        "While watching the story advertisement, my attention does not get diverted very easily.",
+      name: "Attention_Dose_Not_Get_Diverted",
       least: "Strongly disagree",
       most: "Strongly agree",
     },

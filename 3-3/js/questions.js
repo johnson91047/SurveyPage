@@ -33,7 +33,7 @@ var page1 = {
       title: "廣告設計對廣告效果的影響",
       contents: [
         "親愛的受訪者您好：",
-        "本問卷採不記名方式，收集的資料僅供學術研究使用 ，絕不對外公開，在此衷心感謝您的合作與協助。",
+        "本問卷採不記名方式 ，過程中不會紀錄任何個人資料，收集的資料僅供學術研究使用 ，絕不對外公開，你可以自由決定要參與及退出參與該研究。在此衷心感謝您的合作與協助。",
         "國立臺北大學企業管理系研究所",
         "指導教授：丁姵如 博士",
         "研 究 生：陳怡瑄 ",
@@ -41,16 +41,43 @@ var page1 = {
       img: "",
     },
   },
+  multiple_choice_question: {
+    a: {
+      title: "請問你是否同意參與該研究?",
+      name: "Agreement",
+      options: ["同意", "不同意"],
+    },
+  },
   prePage: function () {
     hide_description_img();
   },
   postPage: function () {
-    current_page_count++;
-    current_page = page2;
-    total_timer.startTimer();
+    let result = $(
+      `[name='${this.multiple_choice_question.a.name}']:checked`
+    ).val();
+
+    if (result === "同意") {
+      current_page_count++;
+      current_page = page2;
+      total_timer.startTimer();
+    } else {
+      current_page = disagreePage;
+    }
   },
   check: function () {
-    return true;
+    remove_all_highlight_card();
+    let multiple_choice = current_page["multiple_choice_question"];
+    let result = true;
+
+    for (var key in multiple_choice) {
+      let name = multiple_choice[key].name;
+      let value = $(`[name='${name}']:checked`).val();
+      if (value === undefined) {
+        highlight_card(name);
+        result = false;
+      }
+    }
+    return result;
   },
 };
 
@@ -214,7 +241,7 @@ var page6 = {
   },
   image_multiple_choice_question: {
     a: {
-      title: "老實說，看到第幾頁時，就不想再繼續看下去",
+      title: "實際上，看到第幾頁時，就不想再繼續看下去",
       name: "Stop_Read_Page",
       options: [
         {
@@ -328,6 +355,12 @@ var page7 = {
       most: "非常同意",
     },
     e: {
+      title: "這廣告有引起我的好奇心",
+      name: "Cause_My_Curious",
+      least: "非常不同意",
+      most: "非常同意",
+    },
+    f: {
       title: "看廣告的時候，我想快點知道是哪個品牌",
       name: "Want_To_Know_The_Brand_Quickly",
       least: "非常不同意",
@@ -343,12 +376,14 @@ var page7 = {
     let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
     let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
     let result5 = $(`[name='${this.normal_question.e.name}']:checked`).val();
+    let result6 = $(`[name='${this.normal_question.f.name}']:checked`).val();
 
     storeData[this.normal_question.a.name] = result1;
     storeData[this.normal_question.b.name] = result2;
     storeData[this.normal_question.c.name] = result3;
     storeData[this.normal_question.d.name] = result4;
     storeData[this.normal_question.e.name] = result5;
+    storeData[this.normal_question.f.name] = result6;
 
     current_page_count++;
     current_page = page8;
@@ -386,13 +421,13 @@ var page8 = {
       most: "非常同意",
     },
     b: {
-      title: "我知道我可以自己選擇要不要看完這則廣告 ",
-      name: "Understand_Can_Choose_Whether_To_Finish",
+      title: "我感覺我被迫要看完這則廣告",
+      name: "Feel_Forced_To_Finish_Ad",
       least: "非常不同意",
       most: "非常同意",
     },
     c: {
-      title: "我覺得我是可以自己控制觀看速度",
+      title: "我覺得我可以控制觀看速度",
       name: "Can_Control_Viewing_Speed",
       least: "非常不同意",
       most: "非常同意",
@@ -464,8 +499,8 @@ var page9 = {
       most: "非常同意",
     },
     e: {
-      title: "這則廣告是吸引我的",
-      name: "Ad_Held_My_Attention",
+      title: "在觀看廣告時，我的注意力不容易分散。",
+      name: "Attention_Dose_Not_Get_Diverted",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -654,20 +689,20 @@ var page12 = {
   },
   normal_question: {
     a: {
-      title: "您購買該品牌產品的可能性有多少？",
-      name: "How_Likely_To_Purchase",
+      title: "接下來三個月內，我可能購買該品牌可能性有多少？",
+      name: "May_Buy_Product_Next_Three_Month",
       least: "非常不同意",
       most: "非常同意",
     },
     b: {
-      title: "這個廣告是讓你想購買該品牌的產品",
+      title: "這個廣告讓我想購買該品牌的產品",
       name: "Did_Ad_Motivate_To_Purchase",
       least: "非常不同意",
       most: "非常同意",
     },
     c: {
-      title: "看完這廣告，你最近是會想購買該品牌產品的",
-      name: "Want_To_Try_If_Never_Try",
+      title: "下次若有機會，我會考慮購買該品牌產品",
+      name: "I_Will_Consider_Buying_This_Brand",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -678,8 +713,20 @@ var page12 = {
       most: "非常同意",
     },
     e: {
-      title: "接下來三個月內，我可能購買該品牌的產品 ",
-      name: "May_Buy_Product_Next_Three_Month",
+      title: "當選擇這類商品時，我會優先考量這個品牌",
+      name: "This_Brand_Top_Priority",
+      least: "非常不同意",
+      most: "非常同意",
+    },
+    f: {
+      title: "我可以在眾多競爭品牌中辨認出該品牌",
+      name: "Can_Recognize_From_Other_Brand",
+      least: "非常不同意",
+      most: "非常同意",
+    },
+    g: {
+      title: "如果可以，我不會購買其他品牌",
+      name: "I_Wont_Buy_Other_Brand",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -692,11 +739,17 @@ var page12 = {
     let result2 = $(`[name='${this.normal_question.b.name}']:checked`).val();
     let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
     let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
+    let result5 = $(`[name='${this.normal_question.e.name}']:checked`).val();
+    let result6 = $(`[name='${this.normal_question.f.name}']:checked`).val();
+    let result7 = $(`[name='${this.normal_question.g.name}']:checked`).val();
 
     storeData[this.normal_question.a.name] = result1;
     storeData[this.normal_question.b.name] = result2;
     storeData[this.normal_question.c.name] = result3;
     storeData[this.normal_question.d.name] = result4;
+    storeData[this.normal_question.e.name] = result5;
+    storeData[this.normal_question.f.name] = result6;
+    storeData[this.normal_question.g.name] = result7;
 
     current_page_count++;
     current_page = page13;
@@ -879,6 +932,12 @@ var personalPage = {
       img: "",
     },
   },
+  input_question: {
+    a: {
+      title: "請填入手機後三碼",
+      name: "Last_Three_Digits_Of_Phone_Number",
+    },
+  },
   multiple_choice_question: {
     a: {
       title: "性別",
@@ -951,12 +1010,17 @@ var personalPage = {
     storeData[this.multiple_choice_question.d.name] = result4;
     storeData[this.multiple_choice_question.e.name] = result5;
 
+    storeData[this.input_question.a.name] = $(
+      `[name='${current_page.input_question.a.name}']`
+    ).val();
+
     current_page_count++;
     current_page = finishPage;
   },
   check: function () {
     remove_all_highlight_card();
     let multiple_choice = current_page["multiple_choice_question"];
+    let input = $(`[name='${current_page.input_question.a.name}']`).val();
     let result = true;
 
     for (var key in multiple_choice) {
@@ -966,6 +1030,11 @@ var personalPage = {
         highlight_card(name);
         result = false;
       }
+    }
+
+    if (input === undefined || input === "") {
+      highlight_card(current_page.input_question.a.name);
+      result = false;
     }
 
     return result;
@@ -998,6 +1067,23 @@ var finishPage = {
     count.transaction(function (value) {
       return (value || 0) + 1;
     });
+  },
+  postPage: function () {},
+  check: function () {},
+};
+
+var disagreePage = {
+  description: {
+    a: {
+      title: "問卷完成!",
+      contents: ["非常感謝您！我們已經收到您填寫的問卷 。"],
+      img: "",
+    },
+  },
+  prePage: function () {
+    hide_description_img();
+    $("#page").hide();
+    $("#nextBtn").hide();
   },
   postPage: function () {},
   check: function () {},
