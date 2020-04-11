@@ -575,6 +575,12 @@ var page10 = {
       least: "非常不同意",
       most: "非常同意",
     },
+    e: {
+      title: "看完這則限時動態後，我記得限時動態中的內容",
+      name: "Remember_The_Story",
+      least: "非常不同意",
+      most: "非常同意",
+    },
   },
   prePage: function () {
     hide_description_img();
@@ -584,11 +590,13 @@ var page10 = {
     let result2 = $(`[name='${this.normal_question.b.name}']:checked`).val();
     let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
     let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
+    let result5 = $(`[name='${this.normal_question.e.name}']:checked`).val();
 
     storeData[this.normal_question.a.name] = result1;
     storeData[this.normal_question.b.name] = result2;
     storeData[this.normal_question.c.name] = result3;
     storeData[this.normal_question.d.name] = result4;
+    storeData[this.normal_question.e.name] = result5;
 
     current_page_count++;
     current_page = page11;
@@ -644,6 +652,12 @@ var page11 = {
       least: "非常不同意",
       most: "非常同意",
     },
+    e: {
+      title: "看完這則限時動態後，我記得限時動態中的品牌",
+      name: "Remember_The_Brand",
+      least: "非常不同意",
+      most: "非常同意",
+    },
   },
   prePage: function () {
     hide_description_img();
@@ -653,11 +667,13 @@ var page11 = {
     let result2 = $(`[name='${this.normal_question.b.name}']:checked`).val();
     let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
     let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
+    let result5 = $(`[name='${this.normal_question.e.name}']:checked`).val();
 
     storeData[this.normal_question.a.name] = result1;
     storeData[this.normal_question.b.name] = result2;
     storeData[this.normal_question.c.name] = result3;
     storeData[this.normal_question.d.name] = result4;
+    storeData[this.normal_question.e.name] = result5;
 
     current_page_count++;
     current_page = page12;

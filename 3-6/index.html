@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.css"
+      media="screen,projection"
+    />
+
+    <link
+      href="css/style.css"
+      type="text/css"
+      rel="stylesheet"
+      media="screen,projection"
+    />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <nav class="white z-depth-1" role="navigation">
+      <div class="nav-wrapper container">
+        <div class="brand-logo grey-text chinese">Survey</div>
+      </div>
+    </nav>
+
+    <!-- description section -->
+    <div class="container row" id="description_section">
+      
+    </div>
+    
+    <!-- story section -->
+    <div id="story" class="container">
+      <div class="section">
+        <div class="row">
+          <div id="story_container" class='embedsocial-stories' data-ref="c4abe555a45e8bdef07acd7f8cc01cc6cbc22a18"></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/st.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialStoriesScript"));</script>
+        </div>
+      </div>
+    </div>
+
+    <!-- survey section -->
+    <div class="container">
+      <div class="row" id="survey_multiple_choice_section">
+
+      </div>
+      <div class="row" id="survey_image_selection_section">
+
+      </div>
+      <div class="row" id="survey_normal_section">
+
+      </div>
+      <div class="row" id="survey_selection_section">
+
+      </div>
+      <div class="row" id="survey_input_section">
+
+      </div>
+    </div>
+
+    <div class="row center">
+      <p id="page">1/5</p>
+    </div>
+
+    <div class="row">
+      <a id="nextBtn" class="btn waves-effect col s12 m2 offset-m5" onclick="OnNextClick()">Next</a>
+    </div>
+    
+    <template id="normal_question_template">
+      <div data-repeat-value="normal_question">
+        <div class="divider"></div>
+        <form>
+          <div class="row section">
+            <div class="row col s12 m3 offset-m1 left-align">
+              <p><b>{{ value.title }}</b></p>
+              <br>
+            </div>
+
+            <div class="card col s12 m6 offset-m1">
+              <div class="col s2 center-align">
+                <p>{{ value.least }}</p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="1" />
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="2"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="3"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="4"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="5"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="6"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s1 center-align">
+                <p>
+                  <label>
+                    <input name="{{ value.name }}" type="radio" value="7"/>
+                    <span></span>
+                  </label>
+                </p>
+              </div>
+              <div class="col s2 center-align">
+                <p>{{ value.most }}</p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </template>
+
+    <template id="description_template">
+      <div data-repeat-value="description">
+        <div class="divider"></div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title title-bold">{{ value.title }}</span>
+            <div data-repeat-lines="{{ value.contents }}">
+              <p >{{ lines }}</p>
+              <br>
+            </div>
+          </div>
+          <div name="des_img" class="row center">
+            <img class="border" src="{{ value.img }}" height="500"></img>
+          </div>
+          <div class="row"></div>
+        </div>
+      </div>
+    </template>
+
+    <template id="multiple_choice_question_template">
+      <div data-repeat-value="multiple_choice_question">
+        <div class="divider"></div>
+        <form>
+          <div class="row section">
+            <div class="row col s12 m3 offset-m1 left-align">
+              <p><b>{{ value.title }}</b></p>
+              <br>
+            </div>
+
+            <div class="card col s12 m7 offset-m1">
+              <div data-repeat-option="{{ value.options }}">
+                <p>
+                  <label>
+                    <input name="{{ ^.value.name }}" type="radio" value="{{ option }}" />
+                    <span>{{ option }}</span>
+                  </label>
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </template>
+
+    <template id="selection_question_template">
+      <div data-repeat-value="selection_question">
+        <div class="divider"></div>
+        <form>
+          <div class="row section">
+            <div class="row col s12 m3 offset-m1 left-align">
+              <p><b>{{ value.title }}</b></p>
+              <br>
+            </div>
+
+            <div class="card col s12 m7 offset-m1">
+              <div data-repeat-option="{{ value.options }}">
+                <p>
+                  <label>
+                    <input name="{{ ^.value.name }}" type="checkbox" value="{{ option }}" />
+                    <span>{{ option }}</span>
+                  </label>
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </template>
+
+    <template id="input_question_template">
+      <div data-repeat-value="input_question">
+        <div class="divider"></div>
+        <form>
+          <div class="row section">
+            <div class="col s12 m3 offset-m1 left-align">
+              <p><b>{{ value.title }}</b></p>
+              <br>
+            </div>
+
+            <div class="col s12 m7 offset-m1">
+              <div class="input-field">
+                <input id="{{ value.name }}" name="{{ value.name }}" value="" type="text" class="validate">
+                <label for="{{ value.name }}">{{ value.name }}</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </template>
+
+    <template id="image_multiple_choice_template">
+      <div data-repeat-value="image_multiple_choice_question">
+        <div class="divider"></div>
+          <div class="card">
+            <div class="card-content">
+              <div class="row left-align">
+                <p><b>{{ value.title }}</b></p>
+              </div>
+  
+              <div data-repeat-option="{{ value.options }}" class="row center">
+                <div class="col s12 m6">
+                  <div class="row section">
+                    <img class="border" src="{{ option.img }}" height="350"/>
+                    <p>
+                      <label>
+                        <input name="{{ ^.value.name }}" type="radio" value="{{ option.option_title }}" />
+                        <span class="darker-text">{{ option.option_title }}</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+
+    
+    <footer class="page-footer blue lighten-3 z-depth-3">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m2">
+
+          <div class="col s12 m2 offset-m2 ">
+            <a href="#"><i class="material-icons">arrow_upward</i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 Copyright
+        </div>
+      </div>
+    </footer>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCu69NJvIDBFJiL0WL9YTPpdtCQqrOq2R0",
+        authDomain: "surveydata-5cb0b.firebaseapp.com",
+        databaseURL: "https://surveydata-5cb0b.firebaseio.com",
+        projectId: "surveydata-5cb0b",
+        storageBucket: "surveydata-5cb0b.appspot.com",
+        messagingSenderId: "129554837856",
+        appId: "1:129554837856:web:a8467b6a424730407d6e05",
+        measurementId: "G-E1J2CRVCCC"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="js/init.js"></script>
+    <script src="js/stamp.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/action.js"></script>
+    <script src="js/storeData.js"></script>
+  </body>
+</html>
