@@ -30,7 +30,7 @@ var hide_description_img = function () {
 var page1 = {
   description: {
     a: {
-      title: "廣告設計對廣告效果的影響",
+      title: "Instagram 限時動態觀看調查",
       contents: [
         "親愛的受訪者您好：",
         "本問卷採不記名方式 ，過程中不會紀錄任何個人資料，收集的資料僅供學術研究使用 ，絕不對外公開，你可以自由決定要參與及退出參與該研究。在此衷心感謝您的合作與協助。",
@@ -134,7 +134,7 @@ var page3 = {
   },
   normal_question: {
     a: {
-      title: "我可以馬上知道廣告的品牌",
+      title: "我可以馬上知道圖片中的品牌",
       name: "Know_Brand_Immediately",
       least: "非常不同意",
       most: "非常同意",
@@ -171,10 +171,10 @@ var page4 = {
     a: {
       title: "限時動態",
       contents: [
-        "你將會在下一頁看到一則「限時動態」的廣告",
+        "你將會在下一頁看到一則「限時動態」",
         "操作方法：",
         "你可以藉由點擊圖片旁的箭頭，切換到下一頁",
-        "當你想關掉這則限時動態時，你可以點擊畫面中的叉叉，或者黑色的地方。",
+        "當你想關掉這則限時動態時，你隨時可以點擊畫面中的叉叉，或者黑色的地方。",
       ],
       img: "",
     },
@@ -209,7 +209,7 @@ var page5 = {
   description: {
     a: {
       title: "點擊下方限時動態的圖示",
-      contents: ["前往下一頁前，請先觀看這則限時動態廣告"],
+      contents: ["前往下一頁前，請先觀看這則「限時動態」"],
       img: "",
     },
   },
@@ -273,8 +273,8 @@ var page6 = {
   },
   normal_question: {
     a: {
-      title: "我是願意把這廣告看完的",
-      name: "Happy_To_Finish_Ad",
+      title: "我是願意把這則限時動態看完的",
+      name: "Happy_To_Finish_Story",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -331,38 +331,38 @@ var page7 = {
   },
   normal_question: {
     a: {
-      title: "這廣告讓我感到好奇",
-      name: "Make_Me_Curious",
+      title: "這則限時動態有引起我的好奇心",
+      name: "Cause_My_Curious",
       least: "非常不同意",
       most: "非常同意",
     },
     b: {
-      title: "看廣告的時候，我很想知道這個品牌是什麼",
+      title: "看這則限時動態時，我想知道這個品牌是什麼",
       name: "Want_To_Know_The_Brand",
       least: "非常不同意",
       most: "非常同意",
     },
     c: {
-      title: "看廣告的時候，我有興趣認識這個品牌",
-      name: "Is_Interested_In_The_Brand",
-      least: "非常不同意",
-      most: "非常同意",
-    },
-    d: {
-      title: "看廣告的時候，我對這個品牌不怎麼感興趣",
+      title: "看這則限時動態的時候，我對這個品牌不怎麼感興趣",
       name: "Is_Not_Interested_In_The_Brand",
       least: "非常不同意",
       most: "非常同意",
     },
+    d: {
+      title: "這則限時動態讓我感到好奇",
+      name: "Make_Me_Curious",
+      least: "非常不同意",
+      most: "非常同意",
+    },
     e: {
-      title: "這廣告有引起我的好奇心",
-      name: "Cause_My_Curious",
+      title: "看這則限時動態的時候，我想快點知道是哪個品牌",
+      name: "Want_To_Know_The_Brand_Quickly",
       least: "非常不同意",
       most: "非常同意",
     },
     f: {
-      title: "看廣告的時候，我想快點知道是哪個品牌",
-      name: "Want_To_Know_The_Brand_Quickly",
+      title: "看這則限時動態的時候，我有意願認識這個品牌",
+      name: "Is_Willing_To_Know_The_Brand",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -421,8 +421,8 @@ var page8 = {
       most: "非常同意",
     },
     b: {
-      title: "我感覺我被迫要看完這則廣告",
-      name: "Feel_Forced_To_Finish_Ad",
+      title: "我感覺我被迫要看完這則限時動態",
+      name: "Feel_Forced_To_Finish_Story",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -475,31 +475,31 @@ var page9 = {
   },
   normal_question: {
     a: {
-      title: "我喜歡看這個廣告",
-      name: "Enjoy_Ad",
+      title: "我喜歡這則限時動態",
+      name: "Enjoy_Story",
       least: "非常不同意",
       most: "非常同意",
     },
     b: {
-      title: "看這則廣告很好玩",
-      name: "Watching_This_Ad_Is_Fun",
+      title: "看這則限時動態很好玩",
+      name: "Watching_This_Story_Is_Fun",
       least: "非常不同意",
       most: "非常同意",
     },
     c: {
-      title: "我認為這則廣告一點都不有趣",
-      name: "Not_Interesting_In_Ad",
+      title: "我認為這則限時動態一點都不有趣",
+      name: "Not_Interesting_In_Story",
       least: "非常不同意",
       most: "非常同意",
     },
     d: {
-      title: "在看這廣告時，我覺得樂在其中",
+      title: "在看這則限時動態時，我覺得樂在其中",
       name: "Thinking_About_How_Much_I_Enjoyed",
       least: "非常不同意",
       most: "非常同意",
     },
     e: {
-      title: "在觀看廣告時，我的注意力不容易分散。",
+      title: "在看這則限時動態時，我的注意力不容易分散。",
       name: "Attention_Dose_Not_Get_Diverted",
       least: "非常不同意",
       most: "非常同意",
@@ -552,26 +552,26 @@ var page10 = {
   },
   normal_question: {
     a: {
-      title: "這廣告整體感覺是好的",
-      name: "Overall_Ad_Evaluation",
+      title: "這則限時動態整體感覺是好的",
+      name: "Overall_Story_Evaluation",
       least: "非常不同意",
       most: "非常同意",
     },
     b: {
-      title: "觀看這廣告是令人感到愉悅",
-      name: "Watching_Ad_Feel_Pleasant",
+      title: "觀看這則限時動態是令人感到愉悅",
+      name: "Watching_Story_Feel_Pleasant",
       least: "非常不同意",
       most: "非常同意",
     },
     c: {
-      title: "這個廣告是討人喜歡的",
-      name: "Ad_Is_Favorable",
+      title: "這則限時動態是討人喜歡的",
+      name: "Story_Is_Favorable",
       least: "非常不同意",
       most: "非常同意",
     },
     d: {
-      title: "這個廣告是吸引人的",
-      name: "This_Ad_Is_Appeal",
+      title: "這則限時動態是有吸引力的",
+      name: "This_Story_Is_Appeal",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -621,8 +621,8 @@ var page11 = {
   },
   normal_question: {
     a: {
-      title: "觀看這個品牌的廣告是令人感到愉悅",
-      name: "Watching_This_Brand_Ad_Is_Pleasant",
+      title: "觀看這個品牌的限時動態是令人感到愉悅",
+      name: "Watching_This_Brand_Story_Is_Pleasant",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -689,14 +689,14 @@ var page12 = {
   },
   normal_question: {
     a: {
-      title: "接下來三個月內，我可能購買該品牌可能性有多少？",
+      title: "接下來三個月內，我可能購買該品牌的可能性有多少？",
       name: "May_Buy_Product_Next_Three_Month",
       least: "非常不同意",
       most: "非常同意",
     },
     b: {
-      title: "這個廣告讓我想購買該品牌的產品",
-      name: "Did_Ad_Motivate_To_Purchase",
+      title: "這則限時動態讓我想購買該品牌的產品",
+      name: "Did_Story_Motivate_To_Purchase",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -800,8 +800,7 @@ var page13 = {
     },
     d: {
       title: "我喜歡深入思考某些事情",
-      name:
-        "Seek_Out_Situations_Where_It_Is_Likely_That_I_Will_Have_To_Think_In_Depth",
+      name: "Think_In_Depth",
       least: "非常不同意",
       most: "非常同意",
     },
@@ -965,18 +964,7 @@ var personalPage = {
     d: {
       title: "職業",
       name: "Career",
-      options: [
-        "學生",
-        "軍警公教",
-        "農林漁牧",
-        "服務業",
-        "製造業",
-        "資訊/科技",
-        "觀光/旅遊業",
-        "醫療保健業",
-        "自由業",
-        "其他",
-      ],
+      options: ["學生", "非學生"],
     },
     e: {
       title: "您每天花費多少時間在社群媒體上？",

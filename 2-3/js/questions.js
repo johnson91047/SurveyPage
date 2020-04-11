@@ -30,9 +30,9 @@ var hide_description_img = function () {
 var page1 = {
   description: {
     a: {
-      title: "How well do you like this Instagram Story advertisement?",
+      title: "How well do you like this Instagram story?",
       contents: [
-        "This research is to observe the effect of descriptions on advertising effectiveness.",
+        "This research is to observe the effect of descriptions on story effectiveness.",
         "Your participation is voluntary and you can withdraw at any time.",
         "It will take you no more than 10 minutes. Your responses will be confidential and used ONLY for scholarly purposes.",
       ],
@@ -137,7 +137,7 @@ var page2 = {
 var page3 = {
   description: {
     a: {
-      title: "Looking at this ad and answer the following question.",
+      title: "Looking at this picture and answer the following question.",
       contents: [
         "Please answer according to your initial thoughts or opinions.",
       ],
@@ -147,20 +147,19 @@ var page3 = {
   normal_question: {
     a: {
       title:
-        "I feel the product information the above ad provides is complete.",
+        "I feel the product information the above picture provides is complete.",
       name: "Feel_Complete",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     b: {
-      title:
-        "I feel knowledgeable about this product after reading the above ad. ",
+      title: "I feel knowledgeable about this product after watching picture. ",
       name: "Feel_Knowledgeable",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     c: {
-      title: "I instantly know what kind of product it is advertised.",
+      title: "I instantly know what kind of product in this picture.",
       name: "Know_What_Find_Of_Product",
       least: "Strongly disagree",
       most: "Strongly agree",
@@ -201,7 +200,7 @@ var page4 = {
     a: {
       title: "You will see a story at next page.",
       contents: [
-        "Click the arrow button to proceed to the next page of the Story Ad. ",
+        "Click the arrow button to proceed to the next page of the Story. ",
         'Click the dark area or "X" button to close.',
       ],
       img: "",
@@ -237,9 +236,7 @@ var page5 = {
   description: {
     a: {
       title: "Click the icon below",
-      contents: [
-        "Watch the Story advertisement, before you progress to next page",
-      ],
+      contents: ["Watch the story, before you progress to next page"],
       img: "",
     },
   },
@@ -272,7 +269,7 @@ var page6 = {
   image_multiple_choice_question: {
     a: {
       title:
-        "Honestly speaking, at which page did you want to stop reading this ad? *",
+        "Honestly speaking, at which page did you want to stop watching this story? *",
       name: "Stop_Read_Page",
       options: [
         {
@@ -304,8 +301,8 @@ var page6 = {
   },
   normal_question: {
     a: {
-      title: "I am happy to finish watching the whole ad.",
-      name: "Happy_To_Finish_Ad",
+      title: "I am happy to finish watching the whole story.",
+      name: "Happy_To_Finish_Story",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
@@ -363,19 +360,19 @@ var page7 = {
   normal_question: {
     a: {
       title:
-        "This ad allows me to proceed to the next page by clicking on the arrow button.",
+        "This story allows me to proceed to the next page by clicking on the arrow button.",
       name: "Understand_Can_Proceed_To_Next_By_Arrow",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     b: {
-      title: "I feel I have no option but to finish watching this ad.",
-      name: "Feel_Forced_To_Finish_Ad",
+      title: "I feel I have no option but to finish watching this story.",
+      name: "Feel_Forced_To_Finish_Story",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     c: {
-      title: "I feel I can control the speed of this ad.",
+      title: "I feel I can control the speed of this story.",
       name: "Can_Control_Viewing_Speed",
       least: "Strongly disagree",
       most: "Strongly agree",
@@ -423,33 +420,33 @@ var page8 = {
   },
   normal_question: {
     a: {
-      title: "I enjoyed this ad very much.",
-      name: "Enjoy_Ad",
+      title: "I enjoyed this story very much.",
+      name: "Enjoy_Story",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     b: {
-      title: "Watching this ad was fun.",
-      name: "Watching_This_Ad_Is_Fun",
+      title: "Watching this story was fun.",
+      name: "Watching_This_Story_Is_Fun",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     c: {
-      title: "I would describe this ad as NOT interesting at all.",
-      name: "Not_Interesting_In_Ad",
+      title: "I would describe this story as NOT interesting at all.",
+      name: "Not_Interesting_In_Story",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     d: {
       title:
-        "While watching this ad, I was thinking about how much I enjoyed it.",
+        "While watching this story, I was thinking about how much I enjoyed it.",
       name: "Thinking_About_How_Much_I_Enjoyed",
       least: "Strongly disagree",
       most: "Strongly agree",
     },
     e: {
       title:
-        "While watching the story advertisement, my attention does not get diverted very easily.",
+        "While watching the story, my attention did not get diverted easily.",
       name: "Attention_Dose_Not_Get_Diverted",
       least: "Strongly disagree",
       most: "Strongly agree",
@@ -501,26 +498,26 @@ var page9 = {
   },
   normal_question: {
     a: {
-      title: "What is your overall evaluation of the ad?",
-      name: "Overall_Ad_Evaluation",
+      title: "What is your overall evaluation of the story?",
+      name: "Overall_Story_Evaluation",
       least: "Very bad",
       most: "Very good",
     },
     b: {
-      title: "Do you feel this ad pleasant?",
-      name: "Watching_Ad_Feel_Pleasant",
+      title: "Do you feel this story pleasant?",
+      name: "Watching_Story_Feel_Pleasant",
       least: "Not pleasant",
       most: "Pleasant",
     },
     c: {
-      title: "Do you think this ad favorable?",
-      name: "Ad_Is_Favorable",
+      title: "Do you think this story favorable?",
+      name: "Story_Is_Favorable",
       least: "Not favorable",
       most: "Favorable",
     },
     d: {
-      title: "Do you find this ad likable?",
-      name: "Ad_Is_Likable",
+      title: "Do you find this story likable?",
+      name: "Story_Is_Likable",
       least: "Not likable",
       most: "Likable",
     },
@@ -600,8 +597,8 @@ var page10 = {
       most: "Very likely",
     },
     b: {
-      title: "Did the ads motivate you to purchase the product?",
-      name: "Did_Ad_Motivate_To_Purchase",
+      title: "Did the story motivate you to purchase the product?",
+      name: "Did_Story_Motivate_To_Purchase",
       least: "Not at all",
       most: "Very much",
     },
@@ -641,97 +638,6 @@ var page10 = {
     storeData[this.normal_question.e.name] = result5;
 
     current_page_count++;
-    current_page = page11;
-  },
-  check: function () {
-    remove_all_highlight_card();
-    let normal = current_page["normal_question"];
-    let result = true;
-
-    for (var key in normal) {
-      let name = normal[key].name;
-      let value = $(`[name='${name}']:checked`).val();
-      if (value === undefined) {
-        highlight_card(name);
-        result = false;
-      }
-    }
-
-    return result;
-  },
-};
-
-var page11 = {
-  description: {
-    a: {
-      title: "Please answer according to your real-life situation or opinions.",
-      contents: [],
-      img: "",
-    },
-  },
-  normal_question: {
-    a: {
-      title:
-        "It is important to me that the food I eat on a typical day contains a lot of vitamins and minerals.",
-      name: "Important_Contain_Vitamin_Minerals",
-      least: "Not at all",
-      most: "Very important",
-    },
-    b: {
-      title:
-        "It is important to me that the food I eat on a typical day keeps me healthy.",
-      name: "Important_Keep_Me_Healthy",
-      least: "Not at all",
-      most: "Very important",
-    },
-    c: {
-      title:
-        "It is important to me that the food I eat on a typical day is nutritious",
-      name: "Important_Is_Nutritious",
-      least: "Not at all",
-      most: "Very important",
-    },
-    d: {
-      title:
-        "It is important to me that the food I eat on a typical day is high in protein",
-      name: "Important_High_Protein",
-      least: "Not at all",
-      most: "Very important",
-    },
-    e: {
-      title:
-        "It is important to me that the food I eat on a typical day is good for my skin/teeth/hair/nails etc",
-      name: "Important_Good_For_skin-teeth-hair-nails",
-      least: "Not at all",
-      most: "Very important",
-    },
-    f: {
-      title:
-        "It is important to me that the food I eat on a typical day is high in fiber and roughage",
-      name: "Important_High_Fiber_Roughage",
-      least: "Not at all",
-      most: "Very important",
-    },
-  },
-  prePage: function () {
-    hide_description_img();
-  },
-  postPage: function () {
-    let result1 = $(`[name='${this.normal_question.a.name}']:checked`).val();
-    let result2 = $(`[name='${this.normal_question.b.name}']:checked`).val();
-    let result3 = $(`[name='${this.normal_question.c.name}']:checked`).val();
-    let result4 = $(`[name='${this.normal_question.d.name}']:checked`).val();
-    let result5 = $(`[name='${this.normal_question.e.name}']:checked`).val();
-    let result6 = $(`[name='${this.normal_question.f.name}']:checked`).val();
-
-    storeData[this.normal_question.a.name] = result1;
-    storeData[this.normal_question.b.name] = result2;
-    storeData[this.normal_question.c.name] = result3;
-    storeData[this.normal_question.d.name] = result4;
-    storeData[this.normal_question.e.name] = result5;
-    storeData[this.normal_question.f.name] = result6;
-
-    current_page_count++;
     current_page = page12;
   },
   check: function () {
@@ -747,6 +653,7 @@ var page11 = {
         result = false;
       }
     }
+
     return result;
   },
 };

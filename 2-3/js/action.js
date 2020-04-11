@@ -1,7 +1,7 @@
 var ctx = new Stamp.Context();
 var storyTimer = new Timer();
 var current_page_count = 0;
-const current_total_page_count = 13;
+const current_total_page_count = 12;
 var survey_normal_target = document.getElementById("survey_normal_section");
 var survey_binary_target = document.getElementById("survey_binary_section");
 var description_target = document.getElementById("description_section");

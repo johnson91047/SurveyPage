@@ -104,7 +104,7 @@ var updatePageIndicator = function () {
 
 var OnNextClick = function () {
   if (!current_page.check()) {
-    alert("you have not finished this page yet!");
+    alert("還有問題尚未填寫!");
     return;
   }
   current_page.postPage();
