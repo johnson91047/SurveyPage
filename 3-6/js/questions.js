@@ -1,4 +1,4 @@
-var Version = "3-5";
+var Version = "3-6";
 var total_timer = new Timer();
 
 var generate_survey_code = function () {
