@@ -1,4 +1,4 @@
-var Version = "2-3";
+var Version = "2-2";
 var total_timer = new Timer();
 
 var generate_survey_code = function () {
@@ -200,10 +200,7 @@ var page4 = {
   description: {
     a: {
       title: "You will see a story at next page.",
-      contents: [
-        "Click the arrow button to proceed to the next page of the story.",
-        'Click the dark area or "X" button to close the story.',
-      ],
+      contents: ['Click the dark area or "X" button to close the story.'],
       img: "",
     },
   },
