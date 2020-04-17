@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="limit"></p>
+    <p id="first"></p>
+    <p id="second"></p>
+    <p id="third"></p>
+    <p id="fourth"></p>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCOZEE8Q7lkClwEl9Qwv57YkSd6g8zoFio",
+        authDomain: "redirectcounter.firebaseapp.com",
+        databaseURL: "https://redirectcounter.firebaseio.com",
+        projectId: "redirectcounter",
+        storageBucket: "redirectcounter.appspot.com",
+        messagingSenderId: "913532184722",
+        appId: "1:913532184722:web:b5c1562360097c48e11e4b",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      let webpages = [
+        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_6nWf33Q9Bo4vMBD",
+        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_0rBS3Miz2tpWDSl",
+        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_6zF0GHTHu4eGmuV",
+        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_0CmK6ryTqSUIHVb",
+      ];
+
+      let database = firebase.database();
+
+      let root_ref = database.ref(`/`);
+
+      root_ref.once("value").then(function (snapshot) {
+        let value = snapshot.val();
+        let limit = value.Limit;
+
+        document.getElementById("limit").innerHTML = "Limit : " + limit;
+        document.getElementById("first").innerHTML = "First : " + value.first;
+        document.getElementById("second").innerHTML =
+          "Second : " + value.second;
+        document.getElementById("third").innerHTML = "Third : " + value.third;
+        document.getElementById("fourth").innerHTML =
+          "Fourth : " + value.fourth;
+      });
+    </script>
+  </body>
+</html>
