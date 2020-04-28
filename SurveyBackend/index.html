@@ -24,13 +24,6 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
 
-      let webpages = [
-        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_6nWf33Q9Bo4vMBD",
-        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_0rBS3Miz2tpWDSl",
-        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_6zF0GHTHu4eGmuV",
-        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_0CmK6ryTqSUIHVb",
-      ];
-
       let database = firebase.database();
 
       let root_ref = database.ref(`/`);
@@ -40,12 +33,9 @@
         let limit = value.Limit;
 
         document.getElementById("limit").innerHTML = "Limit : " + limit;
-        document.getElementById("first").innerHTML = "First : " + value.first;
-        document.getElementById("second").innerHTML =
-          "Second : " + value.second;
-        document.getElementById("third").innerHTML = "Third : " + value.third;
-        document.getElementById("fourth").innerHTML =
-          "Fourth : " + value.fourth;
+        document.getElementById("first").innerHTML = "2-1 : " + value.first;
+        document.getElementById("second").innerHTML = "2-2 : " + value.second;
+        document.getElementById("third").innerHTML = "2-3 : " + value.third;
       });
     </script>
   </body>

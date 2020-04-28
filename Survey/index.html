@@ -19,10 +19,9 @@
       firebase.initializeApp(firebaseConfig);
 
       let webpages = [
-        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_6nWf33Q9Bo4vMBD",
-        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_0rBS3Miz2tpWDSl",
-        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_6zF0GHTHu4eGmuV",
-        "https://qtrial2012.az1.qualtrics.com/jfe/form/SV_0CmK6ryTqSUIHVb",
+        "https://www.surveycake.com/s/4QDRQ",
+        "https://www.surveycake.com/s/yBBXw",
+        "https://www.surveycake.com/s/AllvP",
       ];
 
       let database = firebase.database();
@@ -31,7 +30,6 @@
       let first_ref = root_ref.child("first");
       let second_ref = root_ref.child("second");
       let third_ref = root_ref.child("third");
-      let fourth_ref = root_ref.child("fourth");
       let limit = 0;
 
       root_ref.once("value").then(function (snapshot) {
@@ -42,10 +40,9 @@
           { 0: value.first },
           { 1: value.second },
           { 2: value.third },
-          { 3: value.fourth },
         ].filter((page) => Object.values(page)[0] < limit);
 
-        let refs = [first_ref, second_ref, third_ref, fourth_ref];
+        let refs = [first_ref, second_ref, third_ref];
         let random_page = Math.floor(Math.random() * pages.length);
 
         page = pages[random_page];
