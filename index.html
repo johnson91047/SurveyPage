@@ -19,60 +19,7 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-
-      let webpages = [
-        "/SurveyPage/3-1",
-        "/SurveyPage/3-2",
-        "/SurveyPage/3-3",
-        "/SurveyPage/3-4",
-        "/SurveyPage/3-5",
-        "/SurveyPage/3-6",
-        "/SurveyPage/3-7",
-        "/SurveyPage/3-8",
-      ];
-
-      let database = firebase.database();
-
-      let root_ref = database.ref(`/count`);
-      let limit = 0;
-
-      root_ref.once("value").then(function (snapshot) {
-        let value = snapshot.val();
-        limit = 20;
-
-        let pages = [
-          { 0: value["3-1"] },
-          { 1: value["3-2"] },
-          { 2: value["3-3"] },
-          { 3: value["3-4"] },
-          { 4: value["3-5"] },
-          { 5: value["3-6"] },
-          { 6: value["3-7"] },
-          { 7: value["3-8"] },
-        ].filter((page) => Object.values(page)[0] < limit);
-
-        if (pages.length == 0) {
-          let random_index = Math.floor(Math.random() * 8);
-          root_ref.child(`3-${random_index + 1}`).transaction(function (value) {
-            return (value || 0) + 1;
-          });
-          setTimeout(function () {
-            window.location.href = webpages[random_index];
-          }, 500);
-          return;
-        }
-
-        let random_page = Math.floor(Math.random() * pages.length);
-
-        page = pages[random_page];
-        let index = parseInt(Object.keys(page)[0], 10);
-        root_ref.child(`3-${index + 1}`).transaction(function (value) {
-          return (value || 0) + 1;
-        });
-        setTimeout(function () {
-          window.location.href = webpages[index];
-        }, 500);
-      });
     </script>
+    <script src="getpage.js"></script>
   </body>
 </html>

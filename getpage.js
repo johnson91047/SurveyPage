@@ -1,5 +1,5 @@
 let database = firebase.database();
-const dataCount = 20;
+const dataCount = 5;
 var pages = ["3-1", "3-2", "3-3", "3-4", "3-5", "3-6", "3-7", "3-8"];
 
 var get_page = async function (page_name) {
